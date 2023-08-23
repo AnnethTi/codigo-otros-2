@@ -1,8 +1,8 @@
-var formulario = document.querySelector("#form")
+var formulario = document.querySelector(".formulario") /* se hace referencia a la clase formulario del html */
 
 formulario.onsubmit = function(e) {
 
-  e.prevent();
+  e.preventDefault(); /* se agrego default */
   
   var n = formulario.elements[0]
   var e = formulario.elements[1]
@@ -13,8 +13,10 @@ formulario.onsubmit = function(e) {
 
   var i = na.selectedIndex
   var nacionalidad = na.options[i].value
+  /* 
+  No se ve bien que me este imprimiendo los datos en consola
   console.log(nombre, edad)
-  console.log(nacionalidad)
+  console.log(nacionalidad) */
 
   if (nombre.length === 0) {
     n.classList.add("error")
@@ -30,12 +32,16 @@ if (nombre.length > 0
   }
 }
 
+/* 
+Se debe de ignorar esta parte para que no aparezca
+desde el inicio el boton y solo aparezca en cada invitado
+
 var botonBorrar = document.createElement("button")
 botonBorrar.textContent = "Eliminar invitado"
 botonBorrar.id = "boton-borrar"
 var corteLinea = document.createElement("br")
 document.body.appendChild(corteLinea)
-document.body.appendChild(botonBorrar);
+document.body.appendChild(botonBorrar); */
 
 function agregarInvitado(nombre, edad, nacionalidad) {
 
@@ -55,9 +61,11 @@ function agregarInvitado(nombre, edad, nacionalidad) {
 var lista = document.getElementById("lista-de-invitados")
 
 var elementoLista = document.createElement("div")
-elementoLista.classList.added("elemento-lista")
+elementoLista.classList.add("elemento-lista") /* se corrigio el metodo "add" */
 lista.appendChild(elementoLista)
 
+/* 
+Se ignora esta parte ya que se repite lo mismo abajo
 var spanNombre = document.createElement("span")
 var inputNombre = document.createElement("input")
 var espacio = document.createElement("br")
@@ -65,7 +73,7 @@ spanNombre.textContent = "Nombre: "
 inputNombre.value = nombre 
 elementoLista.appendChild(spanNombre)
 elementoLista.appendChild(inputNombre)
-elementoLista.appendChild(espacio)
+elementoLista.appendChild(espacio) */
 
 function crearElemento(descripcion, valor) {
 var spanNombre = document.createElement("span")
@@ -95,3 +103,10 @@ elementoLista.appendChild(botonBorrar);
 botonBorrar.parentNode.remove()
   }
 }
+
+
+/* 
+- Me percate que imprime 2 veces nombre pero no se porque lo esta realizando
+- Error: que el boton de Eliminar invitado no desaparece despues de agregar cualquier invitado
+
+*/
